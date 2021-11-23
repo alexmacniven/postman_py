@@ -103,6 +103,10 @@ pygments==2.10.0
 pyparsing==3.0.6
     # via packaging
 pytest==6.2.5
+    # via
+    #   -r requirements_dev.in
+    #   pytest-mock
+pytest-mock==3.6.1
     # via -r requirements_dev.in
 pytz==2021.3
     # via babel
