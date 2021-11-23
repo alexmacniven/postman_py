@@ -6,8 +6,6 @@ postman-py
 .. image:: https://img.shields.io/pypi/v/postman_py.svg
         :target: https://pypi.python.org/pypi/postman_py
 
-.. image:: https://img.shields.io/travis/alexmacniven/postman_py.svg
-        :target: https://travis-ci.com/alexmacniven/postman_py
 
 .. image:: https://readthedocs.org/projects/postman-py/badge/?version=latest
         :target: https://postman-py.readthedocs.io/en/latest/?version=latest
@@ -30,7 +28,7 @@ Postman-Py provides a thin wrappers around the built-in package for sending mail
 Features
 --------
 
-* TODO
+* Send mail as HTML/Plain with attachments
 
 Credits
 -------
