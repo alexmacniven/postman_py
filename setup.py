@@ -13,22 +13,21 @@ with open("HISTORY.rst") as history_file:
 requirements = []
 
 test_requirements = [
-    "pytest>=3",
+    "pytest==6.2.5",
+    "pytest-mock==3.6.1",
 ]
 
 setup(
     author="Alex Macniven",
     author_email="alex_macniven@icloud.com",
-    python_requires=">=3.6",
+    python_requires=">=3.10",
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",
         "Natural Language :: English",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.6",
-        "Programming Language :: Python :: 3.7",
-        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.10",
     ],
     description=(
         "Postman-Py provides a thin wrappers around the built-in package for sending"
