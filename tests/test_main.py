@@ -55,13 +55,27 @@ def conf() -> SMTPConf:
     return SMTPConf("0.0.0.0", "alex", 25, "password")
 
 
-def test_draft_message(sender: str, receiver: str, subject: str, body: str) -> None:
-    message = draft_message(sender, receiver, subject, body)
+@pytest.mark.parametrize(
+    "is_html, content_type",
+    [
+        (False, 'text/plain; charset="us-ascii"'),
+        (True, 'text/html; charset="us-ascii"'),
+    ],
+)
+def test_draft_message(
+    sender: str,
+    receiver: str,
+    subject: str,
+    body: str,
+    is_html: bool,
+    content_type: str,
+) -> None:
+    message = draft_message(sender, receiver, subject, body, is_html)
     assert message["From"] == sender
     assert message["To"] == receiver
     assert message["Subject"] == subject
     assert isinstance(message.get_payload()[0], MIMEText)
-    assert isinstance(message.get_payload()[1], MIMEText)
+    assert message.get_payload()[0]["Content-Type"] == content_type
 
 
 def test_add_attachment(message: MIMEMultipart, asset: Path) -> None:

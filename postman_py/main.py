@@ -27,21 +27,26 @@ class SMTPConf:
     password: str
 
 
-def draft_message(sender: str, receiver: str, subject: str, body: str) -> MIMEMultipart:
+def draft_message(
+    sender: str, receiver: str, subject: str, body: str, is_html: bool = False
+) -> MIMEMultipart:
     """Return a `MIMEMultipart` object with the relevant headers and payload.
 
     :param sender: The `str` email address of the sender.
     :param receiver: The `str` email address of the receiver.
     :param subject: The `str` message subject matter.
     :param body: The `str` textual element of the message body.
+    :param is_html: A `bool` to flag if `body` is in html format. Defaults to False.
     :returns: A `MIMEMultipart` object with headers and payload updated.
     """
     message: MIMEMultipart = MIMEMultipart()
     message["From"] = sender
     message["To"] = receiver
     message["Subject"] = subject
-    message.attach(MIMEText(body, "plain"))
-    message.attach(MIMEText(body, "html"))
+    if is_html:
+        message.attach(MIMEText(body, "html"))
+    else:
+        message.attach(MIMEText(body, "plain"))
     return message
 
 
